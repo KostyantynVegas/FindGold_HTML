@@ -1,0 +1,84 @@
+//Code by KostyantynVegas
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Site Name</title>
+	<script src="https://code.jquery.com/jquery-2.1.0.js"></script>//Get a library
+</head>
+<body>
+	
+	<h1 id="heading">Commentary for game</h1>
+<!--Image size-->
+	<img id="wrld" width=900 height=600 src="Image file">
+<!--Distance text-->
+	<p id="distance"></p>
+   
+
+<script>
+//Start Code
+//Get a random number(location).
+   	var RandomNumber = function (size) {
+   	return Math.floor(Math.random() * size);
+	};
+
+	var getDistance = function (event, target) {
+	var diffX = event.offsetX - target.x;
+	var diffY = event.offsetY - target.y;
+	return Math.sqrt((diffX * diffX) + (diffY * diffY));}
+
+
+var getDistanceHint = function (distance) {
+if (distance < 20) {
+return "Your Text" +" Clicks:"+clicks;
+} else if (distance < 40) {
+return "Your Text" +" Clicks:"+clicks;
+} else if (distance < 60) {
+return "Your Text" +" Clicks:"+clicks;
+} else if (distance < 80) {
+return "Your Text" +" Clicks:"+clicks;
+} else if (distance < 160) {
+return "Your Text" +" Clicks:"+clicks;
+} else if (distance < 320) {
+return "Your Text" +" Clicks:"+clicks;
+} else {
+return "Your Text" +" Clicks:"+clicks;
+}
+};
+//Variables
+var NameText = prompt("Ведите свой ник");
+
+var width = 900;
+var height = 600;
+var clicks = 0;
+//Target object
+var target = {
+x: RandomNumber(width),
+y: RandomNumber(height)
+};
+//Click event
+$("#wrld").click(function (event) {
+   	clicks++;
+
+var distance = getDistance(event, target);
+//Generate a tip
+var distanceHint = getDistanceHint(distance);
+
+$("#distance").text(distanceHint);
+//The End.
+
+//Alert Results.
+//Alert win.
+if (distance < 10) {
+   alert ("Congrats! "+ NameText +" You found gold! Clicks:"+ clicks)
+}
+//Clicks limit(alert lose).
+   if (clicks == 40) {
+   alert (NameText + ", You are lose! Click limit 40, your limit > than 40! Clicks:" +clicks)
+}
+});
+//Code End.
+</script>
+</body>
+</html>
